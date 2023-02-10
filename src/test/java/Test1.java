@@ -12,4 +12,9 @@ public class Test1 {
 
   }
 
+  @Test
+  public void testException() {
+    throw new RuntimeException("test failed");
+  }
+
 }

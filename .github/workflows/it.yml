@@ -36,9 +36,6 @@ jobs:
       run: |
          mvn test --batch-mode --fail-at-end ${{ matrix.testInclude }}
 
-    - name: Merge pull request
-
-
     - name: Publish Test Report
       if: ${{ always() }}
       uses: scacap/action-surefire-report@v1

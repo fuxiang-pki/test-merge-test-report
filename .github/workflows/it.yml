@@ -39,3 +39,5 @@ jobs:
     - name: Publish Test Report
       if: ${{ always() }}
       uses: scacap/action-surefire-report@v1
+      with:
+        check_name: Test Report ${{ matrix.testInclude }}

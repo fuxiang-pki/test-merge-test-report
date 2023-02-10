@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    pull_request:
+
 jobs:
   build:
     name: Run Test
@@ -11,11 +13,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - testPackage: elements.connector
-            moduleName: elements-connector
+          - testPackage: t1
             testInclude: "-Dtest=/**/*Test1"
-          - testPackage: extapi.FragmentsIT
-            moduleName: test1
+          - testPackage: t2
             testInclude: "-Dtest=/**/*Test2"
       fail-fast: false
 
@@ -34,7 +34,11 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: |
-         mvn test --batch-mode --fail-at-end $TEST_INCLUDE
+         mvn test --batch-mode --fail-at-end ${{ matrix.testInclude }}
+
+    - name: Merge pull request
+
+
     - name: Publish Test Report
       if: ${{ always() }}
       uses: scacap/action-surefire-report@v1

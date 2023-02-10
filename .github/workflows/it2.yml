@@ -1,4 +1,4 @@
-name: Integration Test
+name: Integration Test2
 on:
   workflow_dispatch:
   push:
@@ -14,11 +14,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - testPackage: t1
-            testInclude: "-Dtest=/**/*Test1"
-
-          - testPackage: t2
-            testInclude: "-Dtest=/**/*Test2"
+          - testPackage: t3
+            testInclude: "-Dtest=/**/*Test3"
       fail-fast: false
 
     steps:

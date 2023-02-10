@@ -15,6 +15,7 @@ jobs:
         include:
           - testPackage: t1
             testInclude: "-Dtest=/**/*Test1"
+
           - testPackage: t2
             testInclude: "-Dtest=/**/*Test2"
       fail-fast: false
@@ -40,4 +41,4 @@ jobs:
       if: ${{ always() }}
       uses: scacap/action-surefire-report@v1
       with:
-        check_name: Test Report ${{ matrix.testInclude }}
+        check_name: Test Report ${{ matrix.testPackage }}
